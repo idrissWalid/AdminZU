@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center py-10">
+  <h1 class="text-4xl font-bold mb-8">Dashboard Admin</h1>
+
+  <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-xl mb-8">
+    <h2 class="text-2xl mb-4">Statistiques</h2>
+    <p class="mb-2">Total Votes : <span id="total-votes">{{ total_votes }}</span></p>
+    <p>Candidat 1 : {{ votes_c1 }} votes ({{ percent_c1 }}%)</p>
+    <p>Candidat 2 : {{ votes_c2 }} votes ({{ percent_c2 }}%)</p>
+  </div>
+
+  <div class="w-full max-w-2xl">
+    <canvas id="voteChart"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('voteChart').getContext('2d');
+    const voteChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Candidat1', 'Candidat2'],
+        datasets: [{
+          label: 'Votes',
+          data: [{{ votes_c1 }}, {{ votes_c2 }}],
+          backgroundColor: ['#FBBF24', '#F59E0B'],
+        }]
+      },
+      options: {
+        responsive: true,
+      }
+    });
+  </script>
+</body>
+</html>
