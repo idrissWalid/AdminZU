@@ -15,6 +15,9 @@
     <p class="mb-2">Total Votes : <span id="total-votes">{{ total_votes }}</span></p>
     <p>Candidat 1 : {{ votes_c1 }} votes ({{ percent_c1 }}%)</p>
     <p>Candidat 2 : {{ votes_c2 }} votes ({{ percent_c2 }}%)</p>
+    <p>Candidat 3 : {{ votes_c3 }} votes ({{ percent_c3 }}%)</p>
+    <p>Candidat 4 : {{ votes_c4 }} votes ({{ percent_c4 }}%)</p>
+    <p>Candidat 5 : {{ votes_c5 }} votes ({{ percent_c5 }}%)</p>
   </div>
 
   <div class="w-full max-w-2xl">
@@ -26,11 +29,19 @@
     const voteChart = new Chart(ctx, {
       type: 'pie',
       data: {
-        labels: ['Candidat1', 'Candidat2'],
+        labels: ['Candidat1', 'Candidat2', 'Candidat3', 'candidat4', 'candidat5'],
         datasets: [{
           label: 'Votes',
-          data: [{{ votes_c1 }}, {{ votes_c2 }}],
-          backgroundColor: ['#FBBF24', '#F59E0B'],
+          data: [{{ votes_c1 }}, {{ votes_c2 }}, {{ votes_c3 }}, {{ votes_c4 }}, {{ votes_c5 }}],
+          backgroundColor: [
+  '#FBBF24', // jaune clair
+  
+  '#FF0000', // rouge
+  '#FFFFFF', // blanc
+  '#00FF00', // vert
+  
+  '#8B00FF'  // violet
+],
         }]
       },
       options: {
@@ -40,3 +51,4 @@
   </script>
 </body>
 </html>
+
